@@ -1,11 +1,14 @@
 from ._abstract import AbstractAvatarBuilder
 from .mixins import OpacityMixin, BackgroundMixin
 from PIL import Image, ImageDraw
+from .utils import validate_int_param
 
 
 class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
+        
+        self._size = validate_int_param(kwargs, 'size', min_value=4, default=256)
 
     def generate(self, value: int) -> Image:
         """Generate a pixelated avatar from hash value.
@@ -14,13 +17,15 @@ class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
         Returns:
             Image: The generated avatar image.
         """
-        background_size = 256
+        background_size = self._size
         
         background = self._generate_background(background_size, value)
         
+        margin = int(background_size * 0.1)
+        image_size = background_size - 2 * margin
+        
         size = 8
-        scale = 32
-        image_size = size * scale
+        scale = image_size // size
         image = Image.new('RGBA', (image_size, image_size), (0, 0, 0, 0))
         draw = ImageDraw.Draw(image)
         
@@ -39,7 +44,6 @@ class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
                         fill=color
                     )
 
-        avatar_offset = (background_size - image_size) // 2
-        background.alpha_composite(image, (avatar_offset, avatar_offset))
+        background.alpha_composite(image, (margin, margin))
         
         return background
