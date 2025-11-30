@@ -8,7 +8,7 @@ class BackgroundMixin:
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         
-        self._background = validate_bool_param(kwargs, 'background', default=False)
+        self._background = validate_bool_param(kwargs, 'background', default=True)
         self._max_background_luminance = validate_int_param(kwargs, 'max_background_luminance', min_value=0, max_value=255, default=200)
     
     def _generate_background(self, size: int, value: int) -> Image:
