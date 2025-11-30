@@ -123,7 +123,7 @@ AvatarGenerator(
 
 #### Example Output
 
-![](./docs/images/pixel.png)
+![](https://raw.githubusercontent.com/GAKiknadze/avatar_generator/refs/heads/main/docs/images/pixel.png)
 
 ## Advanced Usage
 
