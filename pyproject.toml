@@ -3,14 +3,14 @@ requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "avatar-generator"
+name = "avatar-gen"
 version = "0.1.0"
 description = "A Python library for generating unique, deterministic pixel-based avatars from hash values"
 readme = "README.md"
 requires-python = ">=3.13"
 license = {text = "MIT"}
 authors = [
-    {name = "GAKiknadze", email = "gakiknadze@example.com"}
+    {name = "GAKiknadze"}
 ]
 keywords = ["avatar", "generator", "identicon", "pixel", "hash"]
 classifiers = [
