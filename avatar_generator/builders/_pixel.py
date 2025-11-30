@@ -23,12 +23,13 @@ class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
         image_size = size * scale
         image = Image.new('RGBA', (image_size, image_size), (0, 0, 0, 0))
         draw = ImageDraw.Draw(image)
+        
+        color = (255, 255, 255, self._opacity)
 
         for y in range(size):
             for x in range((size + 1) // 2):
                 idx = x + y * ((size + 1) // 2)
                 if (value >> idx) & 1:
-                    color = (255, 255, 255, self._opacity)
                     draw.rectangle(
                         [x * scale, y * scale, (x + 1) * scale, (y + 1) * scale],
                         fill=color
@@ -39,6 +40,6 @@ class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
                     )
 
         avatar_offset = (background_size - image_size) // 2
-        background.paste(image, (avatar_offset, avatar_offset), image)
+        background.alpha_composite(image, (avatar_offset, avatar_offset))
         
         return background
