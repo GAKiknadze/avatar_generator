@@ -3,7 +3,7 @@ from PIL import Image
 
 class AbstractAvatarBuilder(ABC):
     def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
+        pass
 
     @abstractmethod
     def generate(self, value: int) -> Image:
