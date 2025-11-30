@@ -14,6 +14,10 @@ class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
         Returns:
             Image: The generated avatar image.
         """
+        background_size = 256
+        
+        background = self._generate_background(background_size, value)
+        
         size = 8
         scale = 32
         image_size = size * scale
@@ -34,4 +38,7 @@ class PixelAvatarBuilder(OpacityMixin, BackgroundMixin, AbstractAvatarBuilder):
                         fill=color
                     )
 
-        return image
+        avatar_offset = (background_size - image_size) // 2
+        background.paste(image, (avatar_offset, avatar_offset), image)
+        
+        return background
