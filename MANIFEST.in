@@ -1,0 +1,4 @@
+include README.md
+include LICENSE
+recursive-include avatar_generator *.py
+recursive-include docs *.md

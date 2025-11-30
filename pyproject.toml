@@ -1,9 +1,39 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "avatar-generator"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Python library for generating unique, deterministic pixel-based avatars from hash values"
 readme = "README.md"
 requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "GAKiknadze", email = "gakiknadze@example.com"}
+]
+keywords = ["avatar", "generator", "identicon", "pixel", "hash"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
     "pillow>=12.0.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/GAKiknadze/avatar_generator"
+Repository = "https://github.com/GAKiknadze/avatar_generator"
+Documentation = "https://github.com/GAKiknadze/avatar_generator#readme"
+Issues = "https://github.com/GAKiknadze/avatar_generator/issues"
+
+[tool.setuptools]
+packages = ["avatar_generator", "avatar_generator.builders"]
+
+[tool.setuptools.package-data]
+avatar_generator = ["py.typed"]
