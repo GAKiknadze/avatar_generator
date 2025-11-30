@@ -17,7 +17,7 @@ Avatar Generator is a flexible and extensible library that transforms hash value
 ## Installation
 
 ```bash
-pip install avatar-generator
+pip install avatar-gen
 ```
 
 ## Quick Start
